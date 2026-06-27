@@ -5,11 +5,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Pull Vosk Chinese Image
-        run: docker pull alphacephei/vosk-server:alpine-cn
+      - name: Pull Real Vosk Image
+        run: docker pull alphacephei/vosk-websocket:latest
 
       - name: Save Image to Tar
-        run: docker save -o vosk-server.tar alphacephei/vosk-server:alpine-cn
+        run: docker save -o vosk-server.tar alphacephei/vosk-websocket:latest
 
       - name: Upload Tar Artifact
         uses: actions/upload-artifact@v4

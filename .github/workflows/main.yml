@@ -1,0 +1,18 @@
+name: Download and Export Vosk
+on: [workflow_dispatch] # 允许手动点击触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull Vosk Image
+        run: docker pull alphacephei/vosk-server:latest
+
+      - name: Save Image to Tar
+        run: docker save -o vosk-server.tar alphacephei/vosk-server:latest
+
+      - name: Upload Tar Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vosk-server-pure
+          path: vosk-server.tar
